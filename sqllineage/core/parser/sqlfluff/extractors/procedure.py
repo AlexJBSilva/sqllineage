@@ -6,16 +6,6 @@ from sqllineage.core.parser.sqlfluff.extractors.base import BaseExtractor
 from sqllineage.utils.entities import AnalyzerContext
 
 
-def get_supported_statement_types() -> set[str]:
-    """Collect all supported statement types from all extractors."""
-    from sqllineage.core.parser.sqlfluff.extractors.base import BaseExtractor
-
-    supported: set[str] = set()
-    for extractor_cls in BaseExtractor.__subclasses__():
-        supported.update(extractor_cls.SUPPORTED_STMT_TYPES)
-    return supported
-
-
 class ProcedureExtractor(BaseExtractor):
     """
     Stored Procedure lineage extractor.
@@ -30,7 +20,7 @@ class ProcedureExtractor(BaseExtractor):
     ) -> StatementLineageHolder:
         holder = StatementLineageHolder()
 
-        supported_stmts = get_supported_statement_types()
+        supported_stmts = BaseExtractor.get_supported_statement_types()
 
         procedure_name = self._find_procedure_name(statement)
         if procedure_name:
