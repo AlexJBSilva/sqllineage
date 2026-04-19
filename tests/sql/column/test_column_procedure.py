@@ -40,8 +40,14 @@ END"""
     assert_column_lineage_equal(
         sql,
         [
-            (ColumnQualifierTuple("col1", "tab1"), ColumnQualifierTuple("col1", "tab2")),
-            (ColumnQualifierTuple("col2", "tab1"), ColumnQualifierTuple("col2", "tab2")),
+            (
+                ColumnQualifierTuple("col1", "tab1"),
+                ColumnQualifierTuple("col1", "tab2"),
+            ),
+            (
+                ColumnQualifierTuple("col2", "tab1"),
+                ColumnQualifierTuple("col2", "tab2"),
+            ),
         ],
         dialect="bigquery",
         test_sqlparse=False,

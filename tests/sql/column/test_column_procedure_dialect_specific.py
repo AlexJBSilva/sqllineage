@@ -63,8 +63,14 @@ END"""
     assert_column_lineage_equal(
         sql,
         [
-            (ColumnQualifierTuple("col1", "tab1"), ColumnQualifierTuple("col1", "tab2")),
-            (ColumnQualifierTuple("col2", "tab2"), ColumnQualifierTuple("col2", "tab3")),
+            (
+                ColumnQualifierTuple("col1", "tab1"),
+                ColumnQualifierTuple("col1", "tab2"),
+            ),
+            (
+                ColumnQualifierTuple("col2", "tab2"),
+                ColumnQualifierTuple("col2", "tab3"),
+            ),
         ],
         dialect,
         test_sqlparse=False,

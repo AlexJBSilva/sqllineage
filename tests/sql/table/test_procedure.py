@@ -6,7 +6,9 @@ def test_procedure_with_select():
 BEGIN
 SELECT col1 FROM tab1;
 END"""
-    assert_table_lineage_equal(sql, {"tab1"}, {"proc1"}, dialect="bigquery", test_sqlparse=False)
+    assert_table_lineage_equal(
+        sql, {"tab1"}, {"proc1"}, dialect="bigquery", test_sqlparse=False
+    )
 
 
 def test_procedure_with_insert():
@@ -14,7 +16,9 @@ def test_procedure_with_insert():
 BEGIN
 INSERT INTO tab1 (col1) VALUES (1);
 END"""
-    assert_table_lineage_equal(sql, None, {"proc1", "tab1"}, dialect="bigquery", test_sqlparse=False)
+    assert_table_lineage_equal(
+        sql, None, {"proc1", "tab1"}, dialect="bigquery", test_sqlparse=False
+    )
 
 
 def test_procedure_with_select_and_insert():
@@ -23,4 +27,6 @@ BEGIN
 INSERT INTO tab2 (col1)
 SELECT col1 FROM tab1;
 END"""
-    assert_table_lineage_equal(sql, {"tab1"}, {"proc1", "tab2"}, dialect="bigquery", test_sqlparse=False)
+    assert_table_lineage_equal(
+        sql, {"tab1"}, {"proc1", "tab2"}, dialect="bigquery", test_sqlparse=False
+    )
