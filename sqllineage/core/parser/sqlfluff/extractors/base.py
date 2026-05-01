@@ -259,11 +259,3 @@ class BaseExtractor:
             holder.add_write_column(*context.write_columns)
 
         return holder
-
-    @staticmethod
-    def get_supported_statement_types() -> set[str]:
-        """Collect all supported statement types from all extractors."""
-        supported: set[str] = set()
-        for extractor_cls in BaseExtractor.__subclasses__():
-            supported.update(extractor_cls.SUPPORTED_STMT_TYPES)
-        return supported
